@@ -1,0 +1,61 @@
+MongoDB
+I have participated in InfyTQ exam for System Engineer. MongoDB is one such important topic From DBMS in that exam.
+I am sharing few important queries from MongoDB.
+
+MongoDB
+- It is a unstructured database.
+- It is a document database, which uses JSON like documents.
+- It is a open-source software
+Queries
+To connect a database,
+db=connect("localhost:27017/studDB")
+
+here 27017 : host id
+studDB : database name
+After creating a database, we have to test whether we have connected to the database or not,
+For that use: this will display current db name
+db
+
+In MongoDB, if we compare to sql,
+Table                       ~ Collections
+Rows                        ~ Documents
+Attributes/Columns          ~ Fields
+Basics commands:
+CRUD - Create Read Update Delete
+
+To show available databases :
+
+show databases
+show dbs
+
+To show available COLLECTIONS in current database:
+show collections
+
+To create new collection:
+db.createCollection('dummy')
+
+dropping a database- it will drop the current database connected
+db.dropDatabase()
+
+Inserting a Document into the collection
+
+1.db.dummy.insert({ fname:"ram", lname:'vijay' });
+2.db.dummy.insertMany([{fname:"ramana",lname:'sai',age:25},{fname:'hanu',lname:'krissh'}]);
+Printing the documents
+db.dummy.find()
+
+Note: when we print it we can find a field automaticaly added to each document , "_id" which is added by the MongoDB itself, to uniquely indentify each document.
+To filter with field:
+db.blog.find({fname:'ram'})
+
+To print the document in human eye pleasing format we can use pretty():
+db.blog.find().pretty();
+
+to print sorted output based on particular column, we have to use sort() with the field name/(s) marked as true(1).
+db.blog.find().sort({lname:1})
+
+Updation:
+To update the record we have to give to inputs,
+1st the fields representing document which has to be updated. 2nd the new data. But this will completely delete the document and create a new document.So, we must pass all the fields for that document.
+
+db.blog.update({fname:"abi"},{fname:"abishek"})
